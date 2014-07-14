@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# This is the path of the root of the project
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+DATABASE_PATH = os.path.join(BASE_DIR, 'ls.db')
 
 
 # Quick-start development settings - unsuitable for production
@@ -36,6 +40,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admindocs',
+    'student',
+    'facilitator',
+    'instructor',
+    'registrar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,7 +67,7 @@ WSGI_APPLICATION = 'learningsystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': DATABASE_PATH,
     }
 }
 
@@ -80,3 +89,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_PATH = os.path.join(BASE_DIR,'static')
+
+STATICFILES_DIRS = (
+    STATIC_PATH,
+    )
+
+TEMPLATE_DIRS = (
+    TEMPLATE_PATH,
+    )

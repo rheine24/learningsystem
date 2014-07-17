@@ -11,5 +11,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^facilitator/', include('facilitator.urls')),
+    url(r'^instructor/', include('instructor.urls')),
+    url(r'^registrar/', include('registrar.urls')),
     url(r'^student/', include('student.urls')),
 )

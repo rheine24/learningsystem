@@ -36,7 +36,8 @@
         <br><br>
             <div class="form-box" id="login-box">
                 <div class="header">Sign In Form</div>
-                <form action="index.html" method="post">
+                <form action="student/" method="post">
+                {% csrf_token %}
                     <div class="body bg-gray">
                         <div class="form-group">
                             <input type="text" name="userid" class="form-control" placeholder="Username"/>

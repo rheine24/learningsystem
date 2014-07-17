@@ -9,12 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 
 def index(request):
 	context = RequestContext(request)
-	context_dict = {'boldmessage':'Failed Login'}
-	if request.method == 'POST':
-		user = authenticate(username = request.POST['userid'], password = request.POST['password'])
-		if user is not None:
-			return redirect('test/')
-
+	context_dict = {'boldmessage':'Login Success'}
 	return render_to_response('student/index.html',context_dict, context)
 
 def test(request):

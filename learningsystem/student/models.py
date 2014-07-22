@@ -10,7 +10,19 @@ class Student(models.Model):
 	nickname = models.CharField(max_length=30, blank=True)
 	birthdate = models.DateField()
 	contact_number = models.CharField(max_length=12, blank=True)
-	#photo = models.ImageField()
+	photo = models.ImageField(upload_to = "PPicStd")
 
-    #def __unicode__(self):
-    #    return self.name
+	def __unicode__(self):
+		return self.user.username
+
+class EnrolmentStatus(models.Model):
+	student = models.ForeignKey('Student')
+	event = models.ForeignKey('instructor.Event')
+	status = models.BooleanField()
+
+class Attendance(models.Model):
+	event = models.ForeignKey('instructor.Event')
+	student = models.ForeignKey('Student')
+	location = models.ForeignKey('facilitator.Location')
+	date = models.DateField()
+	time = models.TimeField()

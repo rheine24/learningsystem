@@ -13,9 +13,11 @@ from registrar.models import *
 from facilitator.models import *
 from instructor.models import *
 
+from datetime import *
+
 def home(request):
 	context = RequestContext(request)
-	context_dict = {'boldmessage':'BOLD MESSAGE'}
+	context_dict = {'boldmessage':'BOLD MESSAGE', 'vdateandtime':datetime.today()}
 
 	if request.method == 'POST':
 		user = authenticate(username = request.POST['userid'], password = request.POST['password'])

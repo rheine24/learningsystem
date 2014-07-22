@@ -1,0 +1,4 @@
+Guys. yung login ay yung dating faciLogin. may instLogin din. pero mas cute yung sa faci :) 
+
+to rhett: (done)
+- templates\login  --- {{vdateandtime}} - DONE

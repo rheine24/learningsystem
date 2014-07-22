@@ -3,7 +3,7 @@
 <html class="bg-black">
     <head>
         <meta charset="UTF-8">
-        <title>Learning System | Log in</title>
+        <title>AdminLTE | Log in</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css" />
@@ -12,6 +12,8 @@
         <!-- Theme style -->
         <link href="{% static "css/AdminLTE.css" %}" rel="stylesheet" type="text/css" />
 
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -19,44 +21,37 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="skin-green">
-
-        <header class="header" position:relative>
-            <a href="login.html" class="logo">
-                <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                Learning System
-            </a>
-        <nav class="navbar navbar-static-top" role="navigation">
-            <div class="dateandtime">
-                date today
-            </div>
-        </nav>
-        </header>
-        <div class="bg-black">
-        <br><br>
+    <body class="bg-blur">
+        <div class="col-xs-6 col-md-6">
+            <img src="{% static "img/try.png" %}" style="margin-left:10%;width:100%;height:auto"/>
+        </div>
+        <div class="col-xs-4 col-md-4" style="width:50%;height:100%">
             <div class="form-box" id="login-box">
-                <div class="header">Sign In Form</div>
-                <form action="/" method="post">
-                {% csrf_token %}
+                <div class="margin text-center" style="font-family:'Source Sans Pro', sans-serif">
+                    <h4 style="color:white"><i class="fa fa-clock-o"> {{vdateandtime}} </i> </h4>
+                </div>
+                <div class="header">Sign In</div>
+                <form action="faci1.html" method="get">
+                    {% csrf_token %}
                     <div class="body bg-gray">
                         <div class="form-group">
-                            <input type="text" name="userid" class="form-control" placeholder="Username"/>
+                            <input type="text" name="userid" class="form-control" placeholder="User ID"/>
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" class="form-control" placeholder="Password"/>
+                        </div>          
+                        <div class="form-group">
+                            <input type="checkbox" name="remember_me"/> Remember me
                         </div>
                     </div>
                     <div class="footer">                                                               
-                        <button type="submit" class="btn bg-lightgreen btn-block">Sign in</button>  
-                        
-                        <p><a href="#">Forgot password?</a></p>
-
+                        <button type="submit" class="btn bg-olive btn-block">Sign me in</button>  
+                        <p><a href="#">I forgot my password</a></p>
                     </div>
-                </form>
+                </form>             
             </div>
-            </div>
+        </div>    
 
-        
         <!-- jQuery 2.0.2 -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <!-- Bootstrap -->

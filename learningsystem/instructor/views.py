@@ -11,3 +11,11 @@ def index(request):
 	context = RequestContext(request)
 	context_dict = {'boldmessage':'Login Success'}
 	return render_to_response('instructor/index.html',context_dict, context)
+
+def home(request):
+	context = RequestContext(request)
+	context_dict = {'boldmessage':'Login Success'}
+	return render_to_response('instructor/inst1.html',context_dict, context)
+
+
+#C:\Users\KatherineJoy\Desktop\workspace\for django\learningsystem\learningsystem\templates\instructor

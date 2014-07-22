@@ -2,3 +2,5 @@ Guys. yung login ay yung dating faciLogin. may instLogin din. pero mas cute yung
 
 to rhett: (done)
 - templates\login  --- {{vdateandtime}} - DONE
+- nagdagdag ng html files kay instructor
+	-> editted inst1 - patulong na lang mag-map

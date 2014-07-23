@@ -63,15 +63,15 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Juan de la Cruz</span>
+                                <span>{{vusername}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header bg-light-blue">
                                         <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                                         <p>
-                                            Juan dela Cruz
-                                            <small>Instructor since Nov. 2012</small>
+                                            {{vusername}}
+                                            <small>Instructor since {{vsinceDate}}</small>
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
@@ -110,8 +110,8 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
                         
-                            <h4 class="text-light-blue">[19] Basic Programming using Java EE <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
-                            <p style="margin-left:5%">09:00am-11:00am<br>Everyday</p>
+                            <h4 class="text-light-blue">{{veventId}} {{veventTitle}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
+                            <p style="margin-left:5%">{{vclassTime}}<br>{{vclassFrequency}}</p>
                         
                         
                             <h4 class="text-light-blue">[21] Basic Programming using C <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
@@ -195,16 +195,16 @@
                                 </div><!-- /.box -->
                             </div><!-- /.col -->
                             <div class="col-sm-6">
-                                <h4 class="text-light-blue">[19] Basic Programming using Java EE <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a></h4> 
+                                <h4 class="text-light-blue">{{veventId}} {{veventTitle}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a></h4> 
                                 <dl class="dl-horizontal">
                                     <dt>Instructor:</dt>
-                                    <dd>Dr. Sandra Santos</dd>
+                                    <dd>{{vinstName}}</dd>
                                     <dt>Start Date:</dt>
-                                    <dd>June 10</dd>
+                                    <dd>{{vstartDate}}</dd>
                                     <dt>Time:</dt>
-                                    <dd>03:00pm - 05:00pm</dd>
+                                    <dd>{{vclassTime}}</dd>
                                     <dt>Duration:</dt>
-                                    <dd>2 hours per day for 7 days</dd>
+                                    <dd>{{vduration}}</dd>
                                 </dl>
                                 <h4 class="text-light-blue">[21] Basic Programming using C <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a></h4> 
                                 <dl class="dl-horizontal">
@@ -287,8 +287,8 @@
                 <div class="tab-content">
                     <div class="tab-pane" id="tab_1">
                         
-                            <h4 class="text-light-blue">[19] Basic Programming using Java EE <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
-                            <p style="margin-left:5%">09:00am-11:00am<br>Everyday</p>
+                            <h4 class="text-light-blue">{{veventId}} {{veventTitle}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
+                            <p style="margin-left:5%">{{vclassTime}}<br>{{vclassFrequency}}</p>
                         
                         
                             <h4 class="text-light-blue">[21] Basic Programming using C <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
@@ -372,16 +372,16 @@
                                 </div><!-- /.box -->
                             </div><!-- /.col -->
                             <div class="col-sm-6">
-                                <h4 class="text-light-blue">[19] Basic Programming using Java EE <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a></h4> 
+                                <h4 class="text-light-blue">{{veventId}} {{veventTitle}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a></h4> 
                                 <dl class="dl-horizontal">
                                     <dt>Instructor:</dt>
-                                    <dd>Dr. Sandra Santos</dd>
+                                    <dd>{{vinstName}}</dd>
                                     <dt>Start Date:</dt>
-                                    <dd>June 10</dd>
+                                    <dd>{{vstartDate}}</dd>
                                     <dt>Time:</dt>
-                                    <dd>03:00pm - 05:00pm</dd>
+                                    <dd>{{vclassTime}}</dd>
                                     <dt>Duration:</dt>
-                                    <dd>2 hours per day for 7 days</dd>
+                                    <dd>{{vduration}}</dd>
                                 </dl>
                                 <h4 class="text-light-blue">[21] Basic Programming using C <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a></h4> 
                                 <dl class="dl-horizontal">

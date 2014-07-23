@@ -6,3 +6,4 @@ from student.models import *
 admin.site.register(Student)
 admin.site.register(EnrolmentStatus)
 admin.site.register(Attendance)
+admin.site.register(RaiseHand)

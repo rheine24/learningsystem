@@ -18,7 +18,7 @@ class LSInfo(models.Model):
 	name = models.CharField(max_length=50)
 	shortname = models.CharField(max_length=30)
 	logo = models.ImageField(upload_to = "LSLogo")
-	address = models.CharField(max_length=50)
+	address = models.CharField(max_length=120)
 	contact_number = models.CharField(max_length=12, blank=True)
 
 	def __unicode__(self):

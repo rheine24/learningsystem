@@ -26,3 +26,10 @@ class Attendance(models.Model):
 	location = models.ForeignKey('facilitator.Location')
 	date = models.DateField()
 	time = models.TimeField()
+
+class RaiseHand(models.Model):	
+	student = models.ForeignKey('Student')
+	event = models.ForeignKey('instructor.Event')
+	date = models.DateField()
+	time = models.TimeField()
+	

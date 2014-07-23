@@ -18,8 +18,8 @@ class Location(models.Model):
 	room = models.CharField(max_length=30)
 	floor = models.CharField(max_length=3)
 	bldg = models.CharField(max_length=50)
-	street = models.CharField(max_length=50)
-	town_city = models.CharField(max_length=50)
+	street_address = models.CharField(max_length=50)
+	town_or_city = models.CharField(max_length=50)
 	province = models.CharField(max_length=50)
 	country = models.CharField(max_length=30)
 

@@ -12,6 +12,10 @@ def populate():
         first_name="marc",
         last_name="francisco")
 
+    marc_inst = add_inst(user=marc_user,
+        birthdate="1994-01-25",
+        contact_number="")
+
     arah_user = add_user(username="arah",
         email="arah@arah.com",
         first_name="arah",
@@ -42,6 +46,15 @@ def populate():
         birthdate="1993-09-20",
         contact_number="")
 
+    #Add Event
+    add_evt(name="Basic Programming using C",
+        event_code="Prog C 101",
+        instructor=marc_inst,
+        start_date="2014-08-01",
+        end_date="2014-08-01",
+        start_time="09:00:00",
+        end_time="15:00:00")
+
     #Add Location
     add_loc(room="1",
         floor="2",
@@ -50,6 +63,11 @@ def populate():
         town_or_city="5",
         province="6",
         country="7")
+
+    #Add LS Info
+    add_lsinfo(name="The Free Riders",
+        shortname="TFR",
+        address="Anywhere the wind blows, it doesn't really matter")
 
 
 def add_user(username, email, first_name, last_name):
@@ -72,9 +90,18 @@ def add_std(user, birthdate, contact_number):
     i = Student.objects.get_or_create(user=user, birthdate=birthdate, contact_number=contact_number)[0]
     return i
 
+def add_evt(name, event_code, instructor, start_date, end_date, start_time, end_time):
+    i = Event.objects.get_or_create(name=name, event_code=event_code, instructor=instructor, start_date=start_date,
+        end_date=end_date, start_time=start_time, end_time=end_time)[0]
+    return i
+
 def add_loc(room, floor, bldg, street_address, town_or_city, province, country):
     l = Location.objects.get_or_create(room=room, floor=floor, bldg=bldg, street_address=street_address, town_or_city=town_or_city,
         province=province, country=country)[0]
+    return l
+
+def add_lsinfo(name, shortname, address):
+    l = LSInfo.objects.get_or_create(name=name, shortname=shortname, address=address)[0]
     return l
 
 # Start execution here!

@@ -5,3 +5,4 @@ from instructor.models import *
 
 admin.site.register(Instructor)
 admin.site.register(Event)
+admin.site.register(Frequency)

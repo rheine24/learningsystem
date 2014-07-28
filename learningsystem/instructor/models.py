@@ -17,19 +17,24 @@ class Instructor(models.Model):
 
 class Event(models.Model):
 	name = models.CharField(max_length = 50)
-	event_code = models.CharField(max_length = 15)
-	description = models.CharField(max_length = 160)
-	instructor = models.ForeignKey('Instructor')
+	event_code = models.CharField(max_length = 15, blank=True) #From Admin must be required
+	description = models.CharField(max_length = 160, blank=True)
+	instructor = models.ForeignKey('Instructor') #Get from User
 	start_date = models.DateField()
-	end_date = models.DateField()
+	end_date = models.DateField() #akaRepeatUntil
 	start_time = models.TimeField()
 	end_time = models.TimeField()
-	#rate_questions = models.ForeignKey('')
-	#frequency = models.ForeignKey('')
-	lecture = models.FileField(upload_to = "Lecture/%Y/%m")
-	enlistment_type = models.BooleanField()
-	approval_status = models.BooleanField()
+	frequency = models.ForeignKey('Frequency')  #Monthly/weekly #Default = 0
+	#rate_questions = models.ForeignKey('') #blank = True #Edit mode
+	lecture = models.FileField(upload_to = "Lecture/%Y/%m", blank=True) #Edit Mode
+	enlistment_type = models.BooleanField() #default = free for all
+	approval_status = models.BooleanField() #default = false
 
-	#def __unicode__(self):
-	#	return self.user.event_code
-		
+	def __unicode__(self):
+		return self.event_code
+
+class Frequency(models.Model):
+	description = models.CharField(max_length = 15)
+
+	def __unicode__(self):
+		return self.description

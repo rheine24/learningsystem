@@ -20,6 +20,9 @@ class EnrolmentStatus(models.Model):
 	event = models.ForeignKey('instructor.Event')
 	status = models.BooleanField()
 
+	def __unicode__(self):
+		return self.student
+
 class Attendance(models.Model):
 	event = models.ForeignKey('instructor.Event')
 	student = models.ForeignKey('Student')
@@ -27,9 +30,15 @@ class Attendance(models.Model):
 	date = models.DateField()
 	time = models.TimeField()
 
+	def __unicode__(self):
+		return self.event + self.student
+
 class RaiseHand(models.Model):	
 	student = models.ForeignKey('Student')
 	event = models.ForeignKey('instructor.Event')
 	date = models.DateField()
 	time = models.TimeField()
+
+	def __unicode__(self):
+		return self.event + self.student
 	

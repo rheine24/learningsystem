@@ -33,6 +33,7 @@
         <![endif]-->
     </head>
     <body class="skin-blue">
+            {{request}}
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="instLogin.html" class="logo">
@@ -45,6 +46,7 @@
                 <div class="navbar-right">
                     <div class="col-xs-5 col-md-3">
                         <form action="#" method="get" class="sidebar-form">
+                        {% csrf_token %}
                             <div class="input-group">
                                 <input type="text" name="searchKeyword" class="form-control" placeholder="Search..."/>
                                 <span class="input-group-btn">
@@ -224,7 +226,7 @@
                     <div class="tab-pane" id="tab_3">
                         <div class="row">
                             <div class="col-xs-6 col-lg-10">
-                                <form action="inst2.html" method="get">
+                                <form action="{% url 'InsConfirm' %}" method="post">
                                 {% csrf_token %}
                                     <!-- text input -->
                                     <div class="form-group">
@@ -237,7 +239,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="reservation"/>
+                                            <input type="text" class="form-control pull-right" name = "schedule" id="reservation" required/>
                                         </div><!-- /.input group -->
                                     </div>
                                     <div class="row">
@@ -274,19 +276,19 @@
                                                 <label>Frequency:<label class="text-red">*</label></label>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                                        <input type="radio" name="frequency" id="optionsRadios1" value="never" checked>
                                                         Never
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                        <input type="radio" name="frequency" id="optionsRadios2" value="weekly">
                                                         Weekly
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option3">
+                                                        <input type="radio" name="frequency" id="optionsRadios2" value="monthly">
                                                         Monthly
                                                     </label>
                                                 </div>
@@ -297,13 +299,13 @@
                                             <label>Enlistment type:<label class="text-red">*</label></label>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="optionsRadios1" id="optionsRadios1" value="option4" checked>
+                                                    <input type="radio" name="enlistmentType" id="optionsRadios1" value="free for all" checked>
                                                     Free for all
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="optionsRadios1" id="optionsRadios2" value="option5">
+                                                    <input type="radio" name="enlistmentType" id="optionsRadios2" value="for approval">
                                                     For approval
                                                 </label>
                                             </div>
@@ -316,7 +318,7 @@
                                     </div>
                                     <h6 class="text-red"> * Required </h6>
                                     <button type="submit" class="btn btn-primary">Submit</button>  
-                                    <a class="btn btn-default" type="button" href="#">Cancel</a>
+                                    <a class="btn btn-default" type="button" href="{%url 'InsHome'%}">Cancel</a>
                                 </form>
                             </div>
                         </div>
@@ -449,22 +451,101 @@
                     <div class="tab-pane active" id="tab_3">
                         <div class="row">
                             <div class="col-sm-6">
-                                <dl class="dl-horizontal">
-                                    <dt> Event Name: </dt>
-                                    <dd> Baking 101 </dd>
-                                    <dt> Start Time: </dt>
-                                    <dd> 7:00 am </dd>
-                                    <dt> End Time: </dt>
-                                    <dd> 10:00 am </dd>
-                                    <dt> Frequency </dt>
-                                    <dd> every Monday </dd>
-                                    <dt> Description </dt>
-                                    <dd> This course will focus on the fundamental concepts of baking. </dd>
-                                </dl>    
+                                <form action="{% url 'InsSave' %}" method="post">
+                                {% csrf_token %}
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        <label>Event Name:<label class="text-red">*</label></label>
+                                        <input type="text" class="form-control" value="{{vConfirmEventName}}" name="eventName" disabled="true" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Schedule:<label class="text-red">*</label></label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control pull-right" value = "{{vConfirmSchedule}}" name = "schedule" id="reservation" disabled="true"/>
+                                        </div><!-- /.input group -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="bootstrap-timepicker">
+                                                <div class="form-group">
+                                                    <label>Start Time:<label class="text-red">*</label></label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control timepicker" value="{{vConfirmStartTime}}" name="startTime" disabled="true"/>
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-clock-o"></i>
+                                                        </div>
+                                                    </div><!-- /.input group -->
+                                                </div><!-- /.form group -->
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="bootstrap-timepicker">
+                                                <div class="form-group">
+                                                    <label>End Time:<label class="text-red">*</label></label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control timepicker" value = "vConfirmEndTime" name="endTime" disabled="true"/>
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-clock-o"></i>
+                                                        </div>
+                                                    </div><!-- /.input group -->
+                                                </div><!-- /.form group -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <label>Frequency:<label class="text-red">*</label></label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="frequency" id="optionsRadios1" value="never" disabled="true" checked >
+                                                        Never
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="frequency" id="optionsRadios2" value="weekly" disabled="true">
+                                                        Weekly
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="frequency" id="optionsRadios2" value="monthly" disabled="true">
+                                                        Monthly
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label>Enlistment type:<label class="text-red">*</label></label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="enlistmentType" id="optionsRadios1" value="free for all" disabled="true" checked>
+                                                    Free for all
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="enlistmentType" id="optionsRadios2" value="for approval" disabled="true">
+                                                    For approval
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="form-group">
+                                        <label>Description:</label>
+                                        <textarea class="form-control" rows="5" placeholder="" name="description" disabled="true">{{vConfirmDescription}}</textarea>
+                                    </div>
+                                    <h6 class="text-red"> * Required </h6>
                                 
-                                <p class="text-light-blue">Are the values above correct?</p>
-                                <a class="btn btn-primary btn-xs" type="button" href="inst3.html">Yes</a>
-                                <a class="btn btn-default btn-xs" type="button" href="inst1.html">No</a>
+                                <p class="text-light-blue">Are the values above correct?</p><button type="submit" class="btn btn-primary">Yes</button>  
+                                    <a class="btn btn-default" type="button" href="{%url 'InsHome'%}">No</a>
+                                </form>
                             </div>
                         </div>
                     </div><!-- /.tab-pane -->
@@ -597,7 +678,7 @@
                         <div class="alert alert-success alert-dismissable">
                             <i class="fa fa-check"></i>
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <b>Congratulations!</b> You have succesfully created a new event. Please do not forget the frequency and duration of your event.
+                            <b>Congratulations!</b> You have succesfully created a new event. Please do not forget the schedule of your event.
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
@@ -611,7 +692,7 @@
                                     <dt>Duration:</dt>
                                     <dd>{{vduration}}</dd>
                                 </dl>    
-                                <a class="btn btn-success" type="button" href="inst1.html">Okay</a>
+                                <a class="btn btn-success" type="button" href="{% url 'InsHome'%}">Okay</a>
                             </div>
                         </div>
                     </div><!-- /.tab-pane -->

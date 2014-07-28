@@ -31,7 +31,7 @@
                     <h4 style="color:white"><i class="fa fa-clock-o"> {{vdateandtime}} </i> </h4>
                 </div>
                 <div class="header">Sign In</div>
-                <form action="faci1.html" method="get">
+                <form action="{% url 'lsHome' %}" method="post">
                     {% csrf_token %}
                     <div class="body bg-gray">
                         <div class="form-group">

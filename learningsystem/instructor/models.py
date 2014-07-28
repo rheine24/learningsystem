@@ -27,8 +27,8 @@ class Event(models.Model):
 	frequency = models.ForeignKey('Frequency')  #Monthly/weekly #Default = 0
 	#rate_questions = models.ForeignKey('') #blank = True #Edit mode
 	lecture = models.FileField(upload_to = "Lecture/%Y/%m", blank=True) #Edit Mode
-	enlistment_type = models.BooleanField() #default = free for all
-	approval_status = models.BooleanField() #default = false
+	enlistment_type = models.BooleanField(default="True") #default = free for all (True)
+	approval_status = models.BooleanField(default="False") #default = not yet approved (False)
 
 	def __unicode__(self):
 		return self.event_code

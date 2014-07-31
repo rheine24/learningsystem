@@ -22,6 +22,7 @@ def home(request):
 	if request.method == 'POST':
 		user = authenticate(username = request.POST['userid'], password = request.POST['password'])
 		if user is not None:
+			request.session['userid'] = request.POST['userid']
 			if len(Instructor.objects.filter(user = user)) == 1:
 				return redirect('instructor/')
 			elif len(Registrar.objects.filter(user = user)) == 1:

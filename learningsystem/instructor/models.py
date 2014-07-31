@@ -14,6 +14,9 @@ class Instructor(models.Model):
 
 	def __unicode__(self):
 		return self.user.username
+		
+	def getName(self):
+		return self.user.first_name + " " + self.middle_name + " " + self.user.last_name
 
 class Event(models.Model):
 	name = models.CharField(max_length = 50)

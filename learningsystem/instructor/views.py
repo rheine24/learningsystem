@@ -59,11 +59,23 @@ def saveEvent(request):
 		context_dict['request'] = request.GET
 
 	if request.method == 'POST':
-		context_dict['request'] = request.POST
+		context_dict['request'] = request.session['postDict']
 		context_dict['vSaveInstName'] = inst.getName()
 		context_dict['vSaveSchedule'] = request.session['postDict'].get('schedule')
 		context_dict['vSaveTime'] = request.session['postDict'].get('startTime') + " - " + request.session['postDict'].get('endTime') 
 		context_dict['vSaveFrequency'] = request.session['postDict'].get('frequency')
+		eventName = request.session['postDict'].get('eventName')
+		startDate = request.session['postDict'].get('schedule').split("-")[0]
+		startDate = date(int(startDate.split("/")[2]),int(startDate.split("/")[0]),int(startDate.split("/")[1]))
+		endDate = request.session['postDict'].get('schedule').split("-")[1]
+		endDate = date(int(endDate.split("/")[2]),int(endDate.split("/")[0]),int(endDate.split("/")[1]))
+		startTime = request.session['postDict'].get('startTime')
+		endTime = request.session['postDict'].get('endTime')
+		frequency = Frequency.objects.get(description = request.session['postDict'].get('frequency'))
+
+		ev = Event(name=eventName, instructor=inst, start_date=startDate,
+        end_date=endDate, start_time=startTime, end_time=endTime, frequency=frequency)
+        ev.save()
 
 
 	return render_to_response('instructor/inst.html',context_dict,context)

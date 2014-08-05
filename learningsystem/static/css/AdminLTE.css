@@ -14,7 +14,7 @@
 html,
 body {
   overflow-x: hidden!important;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: Tahoma, Geneva, sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100%;
   background: rgb(229, 239, 250);
@@ -129,7 +129,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: Tahoma, Geneva, sans-serif;
 }
 /* Page Header */
 .page-header {
@@ -407,7 +407,7 @@ body > .header .logo {
   text-align: center;
   padding: 0 10px;
   width: 220px;
-  font-family: 'Kaushan Script', cursive;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-weight: 500;
   height: 50px;
   display: block;

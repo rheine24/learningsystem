@@ -111,13 +111,17 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
-                        
-                            <h4 class="text-light-blue">[{{veventId}}] {{veventTitle}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
-                            <p style="margin-left:5%">{{vclassTime}}<br>{{vclassFrequency}}</p>
-                        
-                        
-                            <h4 class="text-light-blue">[21] Basic Programming using C <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
-                            <p style="margin-left:5%">11:05am-13:05am<br>Everyday</p>
+                        {% for e in meList %}
+                            <h4 class="text-light-blue">[{{e.0}}] {{e.1}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
+                            <dl class="dl-horizontal">
+                                    <dt>Schedule:</dt>
+                                    <dd>{{e.2}}</dd>
+                                    <dt>Time:</dt>
+                                    <dd>{{e.3}}</dd>
+                                    <dt>Frequency:</dt>
+                                    <dd>{{e.4}}</dd>
+                            </dl>                        
+                        {% endfor %}
                         
                     </div><!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
@@ -197,7 +201,7 @@
                                 </div><!-- /.box -->
                             </div><!-- /.col -->
                             <div class="col-sm-6">
-                                {% for e in eList %}
+                            {% for e in eList %}
                                 <h4 class="text-light-blue">[{{e.0}}] {{e.1}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a></h4> 
                                 <dl class="dl-horizontal">
                                     <dt>Instructor:</dt>
@@ -326,14 +330,18 @@
                     <li class="active"><a href="#tab_3" data-toggle="tab">Create New Event</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane" id="tab_1">
-                        
-                            <h4 class="text-light-blue">[{{veventId}}] {{veventTitle}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
-                            <p style="margin-left:5%">{{vclassTime}}<br>{{vclassFrequency}}</p>
-                        
-                        
-                            <h4 class="text-light-blue">[21] Basic Programming using C <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
-                            <p style="margin-left:5%">11:05am-13:05am<br>Everyday</p>
+                    <div class="tab-pane" id="tab_1">                        
+                        {% for e in meList %}
+                            <h4 class="text-light-blue">[{{e.0}}] {{e.1}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
+                            <dl class="dl-horizontal">
+                                    <dt>Schedule:</dt>
+                                    <dd>{{e.2}}</dd>
+                                    <dt>Time:</dt>
+                                    <dd>{{e.3}}</dd>
+                                    <dt>Frequency:</dt>
+                                    <dd>{{e.4}}</dd>
+                            </dl>                        
+                        {% endfor %}
                         
                     </div><!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">
@@ -602,12 +610,17 @@
                 <div class="tab-content">
                     <div class="tab-pane" id="tab_1">
                         
-                            <h4 class="text-light-blue">[{{veventId}}] {{veventTitle}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
-                            <p style="margin-left:5%">{{vclassTime}}<br>{{vclassFrequency}}</p>
-                        
-                        
-                            <h4 class="text-light-blue">[21] Basic Programming using C <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
-                            <p style="margin-left:5%">11:05am-13:05am<br>Everyday</p>
+                        {% for e in meList %}
+                            <h4 class="text-light-blue">[{{e.0}}] {{e.1}} <a class="btn btn-sm btn-flat" type="button" href="instAbt.html"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
+                            <dl class="dl-horizontal">
+                                    <dt>Schedule:</dt>
+                                    <dd>{{e.2}}</dd>
+                                    <dt>Time:</dt>
+                                    <dd>{{e.3}}</dd>
+                                    <dt>Frequency:</dt>
+                                    <dd>{{e.4}}</dd>
+                            </dl>                        
+                        {% endfor %}
                         
                     </div><!-- /.tab-pane -->
                     <div class="tab-pane" id="tab_2">

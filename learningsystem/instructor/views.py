@@ -27,14 +27,31 @@ def loadEventList():
 
 	return res
 
+def loadMyEventList(inst=None):
+	eList = Event.objects.filter(instructor=inst)
+	res = []
+	for e in eList:
+		eId = e.id
+		eName = e.name
+		eSchedule = e.start_date.strftime('%m/%d/%Y') + "-" + e.end_date.strftime('%m/%d/%Y')
+		eTime = e.start_time.strftime('%H:%m') + "-" + e.end_time.strftime('%H:%m')
+		eFrequency = e.frequency.description
+		res.append([eId,eName,eSchedule,eTime,eFrequency])
+
+	return res
 
 def home(request):
 	context = RequestContext(request)
 	context_dict = {'boldmessage':'Login Success', 'vdateandtime':datetime.today(),
 					'instTabChecker':0,'request':''}
 
+	user = User.objects.get(username = request.session['userid'])
+	inst = Instructor.objects.get(user = user)
+
 	eList = loadEventList()
+	meList = loadMyEventList(inst=inst)
 	context_dict['eList'] = eList
+	context_dict['meList'] = meList
 
 	if request.method == 'GET':
 		context_dict['request'] = request.session['userid']
@@ -48,8 +65,13 @@ def confirmEvent(request):
 	context_dict = {'vdateandtime':datetime.today(),'instTabChecker':1,
 					'request':'',}
 
+	user = User.objects.get(username = request.session['userid'])
+	inst = Instructor.objects.get(user = user)
+
 	eList = loadEventList()
+	meList = loadMyEventList(inst=inst)
 	context_dict['eList'] = eList
+	context_dict['meList'] = meList
 
 	if request.method == 'GET':
 		context_dict['request'] = request.GET
@@ -72,12 +94,14 @@ def saveEvent(request):
 	context_dict = {'vdateandtime':datetime.today(),'instTabChecker':2,
 					'request':''}
 
-	eList = loadEventList()
-	context_dict['eList'] = eList
-
 	user = User.objects.get(username = request.session['userid'])
 	inst = Instructor.objects.get(user = user)
 
+	eList = loadEventList()
+	meList = loadMyEventList(inst=inst)
+	context_dict['eList'] = eList
+	context_dict['meList'] = meList
+	
 	if request.method == 'GET':
 		context_dict['request'] = request.GET
 

@@ -13,11 +13,28 @@ from django.db import models
 
 from instructor.models import *
 
+def loadEventList():
+	eList = Event.objects.all()
+	res = []
+	for e in eList:
+		eId = e.id
+		eName = e.name
+		eInst = e.instructor.getName()
+		eSchedule = e.start_date.strftime('%m/%d/%Y') + "-" + e.end_date.strftime('%m/%d/%Y')
+		eTime = e.start_time.strftime('%H:%m') + "-" + e.end_time.strftime('%H:%m')
+		eFrequency = e.frequency.description
+		res.append([eId,eName,eInst,eSchedule,eTime,eFrequency])
+
+	return res
+
 
 def home(request):
 	context = RequestContext(request)
 	context_dict = {'boldmessage':'Login Success', 'vdateandtime':datetime.today(),
 					'instTabChecker':0,'request':''}
+
+	eList = loadEventList()
+	context_dict['eList'] = eList
 
 	if request.method == 'GET':
 		context_dict['request'] = request.session['userid']
@@ -30,6 +47,9 @@ def confirmEvent(request):
 	context = RequestContext(request)
 	context_dict = {'vdateandtime':datetime.today(),'instTabChecker':1,
 					'request':'',}
+
+	eList = loadEventList()
+	context_dict['eList'] = eList
 
 	if request.method == 'GET':
 		context_dict['request'] = request.GET
@@ -51,6 +71,9 @@ def saveEvent(request):
 	context = RequestContext(request)
 	context_dict = {'vdateandtime':datetime.today(),'instTabChecker':2,
 					'request':''}
+
+	eList = loadEventList()
+	context_dict['eList'] = eList
 
 	user = User.objects.get(username = request.session['userid'])
 	inst = Instructor.objects.get(user = user)

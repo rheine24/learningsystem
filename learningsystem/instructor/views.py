@@ -72,9 +72,16 @@ def saveEvent(request):
 		startTime = request.session['postDict'].get('startTime')
 		endTime = request.session['postDict'].get('endTime')
 		frequency = Frequency.objects.get(description = request.session['postDict'].get('frequency'))
+		description = request.session['postDict'].get('description')
+		enlistmentType = True
+		if request.session['postDict'].get('enlistmentType') == "for approval":
+			enlistmentType = False
+
+
 
 		ev = Event(name=eventName, instructor=inst, start_date=startDate,
-        end_date=endDate, start_time=startTime, end_time=endTime, frequency=frequency)
+        end_date=endDate, start_time=startTime, end_time=endTime, frequency=frequency,
+        description = description,enlistment_type = enlistmentType)
         ev.save()
 
 

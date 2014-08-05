@@ -4,56 +4,72 @@ def populate():
     #Add Users
     thea_user = add_user(username="thea",
         email="thea@thea.com",
-        first_name="thea",
-        last_name="cacatian")
+        first_name="Clariz Thea",
+        last_name="Cacatian")
 
     marc_user = add_user(username="marc",
         email="marc@marc.com",
-        first_name="marc",
-        last_name="francisco")
+        first_name="Marc Rhett",
+        last_name="Francisco")
 
     arah_user = add_user(username="arah",
         email="arah@arah.com",
-        first_name="arah",
-        last_name="jamandra")
+        first_name="Arah Jodelle",
+        last_name="Jamandra")
 
     kate_user = add_user(username="kate",
         email="kate@kate.com",
-        first_name="kate",
-        last_name="manabat")
+        first_name="Katherine Joy",
+        last_name="Manabat")
 
     #Add Facilitator
     add_faci(user=thea_user,
+        middle_name="Mangornong",
         birthdate="1994-01-29",
         contact_number="+639327944979")
 
     thea_faci = add_faci(user=thea_user,
+        middle_name="Mangornong",
         birthdate="1994-01-29",
         contact_number="+639327944979")
 
     #Add Instructor
     add_inst(user=marc_user,
+        middle_name="Cruz",
         birthdate="1994-01-25",
         contact_number="")
 
     marc_inst = add_inst(user=marc_user,
+        middle_name="Cruz",
         birthdate="1994-01-25",
         contact_number="")
 
     #Add Registrar
     add_reg(user=arah_user,
+        middle_name="Trinidad",
+        birthdate="1995-07-25",
+        contact_number="")
+
+    arah_reg = add_reg(user=arah_user,
+        middle_name="Trinidad",
         birthdate="1995-07-25",
         contact_number="")
 
     #Add Student
     add_std(user=kate_user,
+        middle_name="Coleto",
+        birthdate="1993-09-20",
+        contact_number="")
+
+    kate_std = add_std(user=kate_user,
+        middle_name="Coleto",
         birthdate="1993-09-20",
         contact_number="")
 
     #Add Frequency
-    nvr_frq = add_frq(description="Never")
+    nvr_frq = add_frq(description="Once")
 
-    add_frq(description="Never")
+    add_frq(description="Once")
     add_frq(description="Weekly")
     add_frq(description="Monthly")
 
@@ -111,20 +127,20 @@ def add_user(username, email, first_name, last_name):
     u = User.objects.get_or_create(username=username, email=email, first_name=first_name, last_name=last_name)[0]
     return u
 
-def add_faci(user, birthdate, contact_number):
-    f = Facilitator.objects.get_or_create(user=user, birthdate=birthdate, contact_number=contact_number)[0]
+def add_faci(user, middle_name, birthdate, contact_number):
+    f = Facilitator.objects.get_or_create(user=user, middle_name=middle_name, birthdate=birthdate, contact_number=contact_number)[0]
     return f
 
-def add_inst(user, birthdate, contact_number):
-    i = Instructor.objects.get_or_create(user=user, birthdate=birthdate, contact_number=contact_number)[0]
+def add_inst(user, middle_name, birthdate, contact_number):
+    i = Instructor.objects.get_or_create(user=user, middle_name=middle_name, birthdate=birthdate, contact_number=contact_number)[0]
     return i
 
-def add_reg(user, birthdate, contact_number):
-    r = Registrar.objects.get_or_create(user=user, birthdate=birthdate, contact_number=contact_number)[0]
+def add_reg(user, middle_name, birthdate, contact_number):
+    r = Registrar.objects.get_or_create(user=user, middle_name=middle_name, birthdate=birthdate, contact_number=contact_number)[0]
     return r
 
-def add_std(user, birthdate, contact_number):
-    s = Student.objects.get_or_create(user=user, birthdate=birthdate, contact_number=contact_number)[0]
+def add_std(user, middle_name, birthdate, contact_number):
+    s = Student.objects.get_or_create(user=user, middle_name=middle_name, birthdate=birthdate, contact_number=contact_number)[0]
     return s
 
 def add_evt(name, event_code, instructor, start_date, end_date, start_time, end_time, frequency):
@@ -137,8 +153,7 @@ def add_frq(description):
     return fr
 
 def add_loc(room, floor, bldg, street_address, town_or_city, province, country):
-    l = Location.objects.get_or_create(room=room, floor=floor, bldg=bldg, street_address=street_address, town_or_city=town_or_city,
-        province=province, country=country)[0]
+    l = Location.objects.get_or_create(room=room, floor=floor, bldg=bldg, street_address=street_address, town_or_city=town_or_city, province=province, country=country)[0]
     return l
 
 def add_fle(facilitator, location, event, date, time):

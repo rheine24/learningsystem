@@ -134,4 +134,14 @@ def saveEvent(request):
 
 	return render_to_response('instructor/inst.html',context_dict,context)
 
+def about(request):
+	context = RequestContext(request)
+	context_dict = {'vdateandtime':datetime.today(),'instTabChecker':2,
+					'request':''}
+
+
+	return render_to_response('instructor/instAbt.html',context_dict,context)
+
+
+
 #C:\Users\KatherineJoy\Desktop\workspace\for django\learningsystem\learningsystem\templates\instructor

@@ -136,11 +136,25 @@ def saveEvent(request):
 
 def about(request):
 	context = RequestContext(request)
-	context_dict = {'vdateandtime':datetime.today(),'instTabChecker':2,
+	context_dict = {'vdateandtime':datetime.today(),'instTabChecker':0,
 					'request':''}
 
+	user = User.objects.get(username = request.session['userid'])
+	inst = Instructor.objects.get(user = user)
 
-	return render_to_response('instructor/instAbt.html',context_dict,context)
+	eList = loadEventList()
+	meList = loadMyEventList(inst=inst)
+	context_dict['eList'] = eList
+	context_dict['meList'] = meList
+
+	if request.method == 'GET':
+		context_dict['request'] = request.session['userid']
+
+	if request.method == 'POST':
+		context_dict['request'] = request.POST
+
+
+	return render_to_response('instructor/instAbt2.html',context_dict,context)
 
 
 

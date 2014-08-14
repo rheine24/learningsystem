@@ -105,12 +105,12 @@
         <div style="margin:5%">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab_1" data-toggle="tab">My Event/s</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">Event/s</a></li>
+                    <li><a href="#tab_1" data-toggle="tab">My Event/s</a></li>
+                    <li class="active"><a href="#tab_2" data-toggle="tab">Event/s</a></li>
                     <li><a href="#tab_3" data-toggle="tab">Create New Event</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="tab_1">
+                    <div class="tab-pane " id="tab_1">
                         {% for e in meList %}
                             <h4 class="text-light-blue">[{{e.0}}] {{e.1}} <a class="btn btn-sm btn-flat" type="button" href="{% url 'InsAbt' %}"><i class="fa fa-fw fa-caret-square-o-down"></i></a><a class="btn btn-sm btn-flat" type="button" href="instStrm.html"><i class="fa fa-fw fa-video-camera"></i></a></h4> 
                             <dl class="dl-horizontal">
@@ -124,7 +124,7 @@
                         {% endfor %}
                         
                     </div><!-- /.tab-pane -->
-                    <div class="tab-pane" id="tab_2">
+                    <div class="tab-pane active" id="tab_2">
                         <div class="row">
                             <div class="col-xs-5 col-md-3">
                                 <div class="box box-solid">
